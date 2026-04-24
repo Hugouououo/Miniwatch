@@ -1,9 +1,9 @@
 const cronometro = document.querySelector(".cronometro") 
-let status = 0 //parado
+let status = 0 // "flag"
 
 //let buttons = document.querySelector(".buttons")
 let playButton = document.querySelector("#play")
-let pauseButton = document.querySelector("#pause")
+//let pauseButton = document.querySelector("#pause")
 let resetButton = document.querySelector("#reset")
 
 let horas = 0
@@ -11,11 +11,21 @@ let minutos = 0
 let segundos = 0
 
 playButton.addEventListener("click", async function startCronometro(){    
-    status = 1
 
-    const delay =(ms)=> new Promise(resolve => setTimeout(resolve,ms))    //promise precisa de new!!!
+    // se tiver DESLIGADO
+    if (status == 0){
+        status = 1 // LIGA (inicia)
+        playButton.innerHTML = 'Pausar'
+    } 
+    // se estiver LIGADO
+    else if (status == 1){
+        status = 0 // DESLIGA (pausa)
+        playButton.innerHTML = 'Continuar'
+    } 
 
-    for(let i=0; status==1 ; i++){
+    const delay =(ms)=> new Promise(resolve => setTimeout(resolve,ms))   
+
+    while (status == 1){ // se o status for LIGADO
         if(horas >= 1){
             cronometro.innerHTML = `${pad(horas, 2)}:${pad(minutos, 2)}:${pad(segundos,2)}`
         } else { 
@@ -26,24 +36,21 @@ playButton.addEventListener("click", async function startCronometro(){
         if(segundos == 60) minutos++, segundos=0
         if(minutos == 60) horas++, minutos=0
 
-        await delay(1000)// 1seg
+        await delay(10)// 1seg
     }
-
-    playButton.disabled = true
 })
 
-pauseButton.addEventListener("click", ()=>{
-/*     switch(status){
-        case 1: 
-            status = 2
-            break
-        case 2:
-            status = 1
-            break
-    } */
-   if(status==1){ status=2}
-   else if(status==2){ status=1}
+resetButton.addEventListener("click", ()=>{
+    // zera tudo (ou seja, para o cronometro)
+    status = horas = minutos = segundos = 0
+    // escreve no html o valor padrão
+    cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos,2)}`
+    playButton.innerHTML = 'Iniciar'
 })
+
+
+
+
 
 
 
