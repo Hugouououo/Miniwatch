@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <title>miniwatch</title>
 </head>
 <body>
     <header>
-        <h1 class="titulo">cronometro Minimalismo fodase</h1>
+        <!--<h1 class="titulo">cronometro Minimalismo fodase</h1>-->
     </header>
     <main>
         <div class="cronometro" id="cronometro">00:00</div>
-        <button class="buttons" id="play">Iniciar</button>
-        <!--<button class="buttons" id="pause">Pausar</button>-->
-        <button class="buttons" id="reset">Reiniciar</button>
+        <div id="div-buttons">
+            <button class="buttons" id="play">
+                <img src="img/play.png" alt=""> 
+                <br>Iniciar
+            </button>
+            <!--<button class="buttons" id="pause">Pausar</button>-->
+            <button class="buttons" id="reset" hidden>
+                <img src="img/reset.png" alt="">
+                <br>Reiniciar
+            </button>
+        </div>
 
     </main>
 </body>

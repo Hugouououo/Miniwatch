@@ -1,26 +1,69 @@
+:root{
+    --cor-titulo: ;
+    --cor-botao: #408a71;
+}
+
 body{
     color: whitesmoke;
     font: bold 1.5em "Arial", sans-serif;
-    background-color: #070F2B;
+    /*background-color: #091413;*/
+    background-image: linear-gradient(
+        to top, 
+        hsl(175, 10%, 6%), 
+        hsl(175, 24%, 6%) 50%, /* Cor intermediária */
+        hsl(175, 38%, 6%)
+    );
 
-    display: grid;
-    grid-template-rows: auto 1fr auto; /*Header Main Footer*/
-    grid-template-columns: minmax(0,1fr); /*previne que a pág scrolle p lado*/
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 0; 
+    box-sizing: border-box;
 }
 
+header > h1{
+    margin: 0;
+}
 .titulo{
-    color: #9290C3;
+    color: #285A48;
 }
 
+main{
+    flex-grow: 0.5; /* n sei se é o melhor jeito, mas tá funcionando */
+}
+
+.cronometro{
+    text-align: center;
+    font-size: 4em;
+}
+
+#div-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    margin-top: 15px;
+}
 .buttons{
-    background-color: #535C91;
-    color: whitesmoke;
+    background-color: transparent;
     font-size: 1em;
-    border: 2px solid #474f79;
-    border-radius: 10px ;
+    border: 2px solid var(--cor-botao);
+    border-radius: 15px ;
+    color: whitesmoke;
+    padding: 5px 10px 5px 10px;
+
+    min-width: 150px;
+    height: 70px;
 }
 .buttons:hover{
-    background-color: #474f79;
-    font-size: 1.05em;
-    transition: all 0.5s ease-out;
+    transition: transform 0.5s ease;
+    background-color: var(--cor-botao);
+    transform: scale(1.075);
 }

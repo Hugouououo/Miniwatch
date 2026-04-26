@@ -1,26 +1,31 @@
 const cronometro = document.querySelector(".cronometro") 
-let status = 0 // "flag"
+let status = 0 
 
 //let buttons = document.querySelector(".buttons")
 let playButton = document.querySelector("#play")
 //let pauseButton = document.querySelector("#pause")
 let resetButton = document.querySelector("#reset")
 
+const textoIniciar = `<img src="img/play.png" alt=""> <br>Iniciar`
+const textoPausar = `<img src="img/pause.png" alt=""> <br>Pausar`
+const textoContinuar = `<img src="img/play.png" alt=""> <br>Continuar`
+
+
 let horas = 0
 let minutos = 0 
 let segundos = 0
 
-playButton.addEventListener("click", async function startCronometro(){    
 
-    // se tiver DESLIGADO
-    if (status == 0){
+playButton.addEventListener("click", async function startCronometro(){    
+    resetButton.removeAttribute('hidden') // exibir o botao
+
+    if (status == 0){ // se tiver DESLIGADO
         status = 1 // LIGA (inicia)
-        playButton.innerHTML = 'Pausar'
+        playButton.innerHTML = textoPausar
     } 
-    // se estiver LIGADO
-    else if (status == 1){
+    else { //if (status == 1){  // se estiver LIGADO
         status = 0 // DESLIGA (pausa)
-        playButton.innerHTML = 'Continuar'
+        playButton.innerHTML = textoContinuar
     } 
 
     const delay =(ms)=> new Promise(resolve => setTimeout(resolve,ms))   
@@ -36,16 +41,18 @@ playButton.addEventListener("click", async function startCronometro(){
         if(segundos == 60) minutos++, segundos=0
         if(minutos == 60) horas++, minutos=0
 
-        await delay(10)// 1seg
+        await delay(1000)// 1seg
     }
 })
 
+
 resetButton.addEventListener("click", ()=>{
-    // zera tudo (ou seja, para o cronometro)
-    status = horas = minutos = segundos = 0
-    // escreve no html o valor padrão
-    cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos,2)}`
-    playButton.innerHTML = 'Iniciar'
+    status = horas = minutos = segundos = 0 // zera tudo (ou seja, para o cronometro)
+    
+    cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos,2)}` // escreve no html o valor padrão
+
+    playButton.innerHTML = textoIniciar
+    resetButton.setAttribute('hidden','hidden')
 })
 
 
