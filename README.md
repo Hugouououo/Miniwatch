@@ -8,7 +8,6 @@
 	- [X] Vermelho
 	- [X] Azul
 	- [X] Laranja
-	- [ ] Liquid Glass (em breve)
 - [ ] Sons 
 	- [ ] E botão para desativá-los
 - [ ] Guardar preferências no _cache_ do navegador
