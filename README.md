@@ -3,6 +3,7 @@
 ### Objetivo
 O objetivo deste projeto foi desenvolver a lógica de um cronômetro através da manipulação direta de variáveis e contadores no JavaScript, não se utilizando do objeto nativo `Date` para o cálculo de tempo real. 
 O projeto explora como o navegador gerencia ciclos de execução e estados de interface.
+
 ### Funcionalidades:
 - [X] Funções de _Pausar_, _Continuar_ e _Reiniciar_
 - [ ] Botão/menu para alternar entre 3 ou mais temas
