@@ -1,61 +1,52 @@
 const cronometro = document.querySelector(".cronometro") 
 let status = 0 
 
-//let buttons = document.querySelector(".buttons")
 let playButton = document.querySelector("#play")
-//let pauseButton = document.querySelector("#pause")
 let resetButton = document.querySelector("#reset")
 
 const textoIniciar = `<img src="img/play.png" alt=""> <br>Iniciar`
 const textoPausar = `<img src="img/pause.png" alt=""> <br>Pausar`
 const textoContinuar = `<img src="img/play.png" alt=""> <br>Continuar`
 
+const data = new Date()
+let tempoInicial
+let tempoAcumulado = 0
 
-let horas = 0
-let minutos = 0 
-let segundos = 0
+playButton.addEventListener("click", function startCronometro() {
+    resetButton.removeAttribute('hidden');
 
+    if (status == 0) {
+        status = 1; // LIGA (inicia)
+        playButton.innerHTML = textoPausar;
 
-playButton.addEventListener("click", async function startCronometro(){    
-    resetButton.removeAttribute('hidden') // exibir o botao
+        tempoInicial = Date.now() - tempoAcumulado;
 
-    if (status == 0){ // se tiver DESLIGADO
-        status = 1 // LIGA (inicia)
-        playButton.innerHTML = textoPausar
-    } 
-    else { //if (status == 1){  // se estiver LIGADO
-        status = 0 // DESLIGA (pausa)
-        playButton.innerHTML = textoContinuar
-    } 
+        timerInterval = setInterval(() => {
+            
+            // tempoPassado = tempoAtual - tempoInicial
+            const tempoPassado = Date.now() - tempoInicial;
+            
+            // convertendo milissegungos p horas, minutos e segundos
+            let segundos = Math.floor((tempoPassado / 1000) % 60);
+            let minutos = Math.floor((tempoPassado / (1000 * 60)) % 60);
+            let horas = Math.floor((tempoPassado / (1000 * 60 * 60)));
 
-    const delay =(ms)=> new Promise(resolve => setTimeout(resolve,ms))   
+            if (horas >= 1) {
+                cronometro.innerHTML = `${pad(horas, 2)}:${pad(minutos, 2)}:${pad(segundos, 2)}`;
+            } else {
+                cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos, 2)}`;
+            }
 
-    while (status == 1){ // se o status for LIGADO
-        if(horas >= 1){
-            cronometro.innerHTML = `${pad(horas, 2)}:${pad(minutos, 2)}:${pad(segundos,2)}`
-        } else { 
-            cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos,2)}`
-        }
+        }, 100); // 100ms
 
-        segundos++
-        if(segundos == 60) minutos++, segundos=0
-        if(minutos == 60) horas++, minutos=0
+    } else {
+        status = 0; // DESLIGA (pausa)
+        playButton.innerHTML = textoContinuar;
 
-        await delay(1000)// 1seg
+        // salva o progresso atual, para evitar que o navegador congele o cronometro
+        tempoAcumulado = Date.now() - tempoInicial;
     }
 })
-
-
-resetButton.addEventListener("click", ()=>{
-    status = horas = minutos = segundos = 0 // zera tudo (ou seja, para o cronometro)
-    
-    cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos,2)}` // escreve no html o valor padrão
-
-    playButton.innerHTML = textoIniciar
-    resetButton.setAttribute('hidden','hidden')
-})
-
-
 
 
 // Source - https://stackoverflow.com/a/2998822
