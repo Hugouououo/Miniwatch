@@ -2,12 +2,12 @@
 
 ### Funcionalidades:
 - [X] Funções de _Pausar_, _Continuar_ e _Reiniciar_
-- [ ] Botão/menu para alternar entre 3 ou mais temas
+- [ ] Botão/menu para alternar entre 5 temas:
 	- [X] Verde (Padrão)
 	- [X] Roxo
 	- [X] Vermelho
 	- [X] Azul
 	- [X] Laranja
-- [ ] Sons 
-	- [ ] Botão para desativá-los
+- [ ] Sons dos botões
+	- [ ] Botão para desativar os sons
 - [ ] Guardar preferências no `localStorage`
