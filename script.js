@@ -1,8 +1,9 @@
-const cronometro = document.querySelector(".cronometro") 
-let status = 0 
+let cronometro = document.querySelector(".cronometro") 
+let ligado = false
 
 let playButton = document.querySelector("#play")
 let resetButton = document.querySelector("#reset")
+let temaButton = document.querySelector("#alternar-tema")
 
 const textoIniciar = `<img src="img/play.png" alt=""> <br>Iniciar`
 const textoPausar = `<img src="img/pause.png" alt=""> <br>Pausar`
@@ -13,18 +14,19 @@ let tempoInicial
 let tempoAcumulado = 0
 
 playButton.addEventListener("click", function startCronometro() {
-    resetButton.removeAttribute('hidden');
+    resetButton.removeAttribute('hidden')
 
-    if (status == 0) {
-        status = 1; // LIGA (inicia)
-        playButton.innerHTML = textoPausar;
+    if (ligado == false) {
+        ligado = true 
+        playButton.innerHTML = textoPausar
+        cronometro.style.opacity = 1
 
-        tempoInicial = Date.now() - tempoAcumulado;
+        tempoInicial = Date.now() - tempoAcumulado
 
         timerInterval = setInterval(() => {
             
             // tempoPassado = tempoAtual - tempoInicial
-            const tempoPassado = Date.now() - tempoInicial;
+            const tempoPassado = Date.now() - tempoInicial
             
             // convertendo milissegungos p horas, minutos e segundos
             let segundos = Math.floor((tempoPassado / 1000) % 60);
@@ -36,17 +38,43 @@ playButton.addEventListener("click", function startCronometro() {
             } else {
                 cronometro.innerHTML = `${pad(minutos, 2)}:${pad(segundos, 2)}`;
             }
-
         }, 100); // 100ms
 
-    } else {
-        status = 0; // DESLIGA (pausa)
+    } else if (ligado == true) {
+        ligado = false
+        clearInterval(timerInterval)
+
+        cronometro.style.opacity = 0.5
         playButton.innerHTML = textoContinuar;
 
-        // salva o progresso atual, para evitar que o navegador congele o cronometro
+        // salva o progresso atual pra evitar que o navegador congele o cronometro
         tempoAcumulado = Date.now() - tempoInicial;
     }
 })
+
+resetButton.addEventListener("click", function resetCronometro(){
+    ligado = false
+    clearInterval(timerInterval)
+    
+    // reseta o tempo e o display do cronometro
+    tempoInicial = tempoAcumulado = 0
+    cronometro.innerHTML = `${pad(0, 2)}:${pad(0, 2)}`
+    cronometro.style.opacity = 0.5
+
+    // volta os bototes ao inicial
+    playButton.innerHTML = textoIniciar
+    resetButton.setAttribute('hidden','hidden')
+})
+
+// alternar temas:
+const classesTema = ["tema-roxo", "tema-vermelho", "tema-azul", "tema-laranja", "tema-verde"]
+let i = 0
+temaButton.addEventListener("click", function alternarTema() {
+    document.body.classList.remove(classesTema[i-1])
+    document.body.classList.add(classesTema[i])
+    i = (i + 1) % classesTema.length
+})
+// ^ super mega hiper gambiarra
 
 
 // Source - https://stackoverflow.com/a/2998822

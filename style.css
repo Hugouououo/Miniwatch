@@ -1,36 +1,52 @@
 :root{
-/* Tema: Verde */
+    /* Tema: Verde */
     --verde-cor-botao: #408a71;
     --verde-gradiente-fundo: 
     linear-gradient(to top, hsl(175, 10%, 6%), hsl(175, 38%, 6%));
-/* Tema: Roxo */
+    /* Tema: Roxo */
     --roxo-cor-botao: #9139a8;
     --roxo-gradiente-fundo: 
     linear-gradient(to top, hsl(280, 15%, 6%), hsl(280, 45%, 7%));
-/* Tema: Vermelho */
+    /* Tema: Vermelho */
     --vermelho-cor-botao: #b32d2d;
     --vermelho-gradiente-fundo: 
     linear-gradient(to top, hsl(0, 25%, 7%), hsl(0, 50%, 8%));
-/* Tema: Azul  */
+    /* Tema: Azul  */
     --azul-cor-botao: #3d7eb5;
     --azul-gradiente-fundo: 
     linear-gradient(to top, hsl(210, 15%, 6%), hsl(210, 40%, 7%));
-/* Tema: Laranja  */
+    /* Tema: Laranja  */
     --laranja-cor-botao: #c76b2c;
     --laranja-gradiente-fundo: 
     linear-gradient(to top, hsl(25, 15%, 6%), hsl(25, 45%, 7%));
-/* Tema:  Liquid Glass (spoiler p quem tiver vendo o código) 
-    --cor-botao: #408a71;
-    --gradiente-fundo: 
-    linear-gradient(to top, hsl(175, 10%, 6%), hsl(175, 38%, 6%));
-    (spoiler p quem tiver vendo o código) */
+}
+
+.tema-verde{
+    --cor-botao: var(--verde-cor-botao);
+    --gradiente-fundo: var(--verde-gradiente-fundo);
+}
+.tema-roxo{
+    --cor-botao: var(--roxo-cor-botao);
+    --gradiente-fundo: var(--roxo-gradiente-fundo);
+}
+.tema-vermelho{
+    --cor-botao: var(--vermelho-cor-botao);
+    --gradiente-fundo: var(--vermelho-gradiente-fundo);
+}
+.tema-azul{
+    --cor-botao: var(--azul-cor-botao);
+    --gradiente-fundo: var(--azul-gradiente-fundo);
+}
+.tema-laranja{
+    --cor-botao: var(--laranja-cor-botao);
+    --gradiente-fundo: var(--laranja-gradiente-fundo);
 }
 
 body{
     color: whitesmoke;
     font: bold 1.5em "Arial", sans-serif;
     
-    background-image: var(--verde-gradiente-fundo);
+    background-image: var(--gradiente-fundo);
 
     height: 100vh;
     margin: 0;
@@ -46,11 +62,28 @@ body{
     box-sizing: border-box;
 }
 
-header > h1{
-    margin: 0;
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
-.titulo{
-    color: #285A48;
+
+/* Botoes superiores */
+.github img, .seletor-tema img{
+    width: 40px;
+    opacity: 0.15;
+}
+.github img:hover, .seletor-tema img:hover{
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+#alternar-tema{
+    background: none;
+    border: none;
+    cursor: pointer; 
 }
 
 main{
@@ -60,6 +93,7 @@ main{
 .cronometro{
     text-align: center;
     font-size: 4em;
+    opacity: 0.5;
 }
 
 #div-buttons{
@@ -72,7 +106,7 @@ main{
 .buttons{
     background-color: transparent;
     font-size: 1em;
-    border: 2px solid var(--verde-cor-botao);
+    border: 2px solid var(--cor-botao);
     border-radius: 15px ;
     color: whitesmoke;
     padding: 5px 10px 5px 10px;
@@ -82,6 +116,6 @@ main{
 }
 .buttons:hover{
     transition: transform 0.5s ease;
-    background-color: var(--verde-cor-botao);
+    background-color: var(--cor-botao);
     transform: scale(1.075);
 }
