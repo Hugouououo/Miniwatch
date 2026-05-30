@@ -73,9 +73,9 @@ temaButton.addEventListener("click", function alternarTema() {
     document.body.classList.remove(classesTema[i-1])
     document.body.classList.add(classesTema[i])
     i = (i + 1) % classesTema.length
+    // falta guardar na localStorage
 })
 // ^ super mega hiper gambiarra
-
 
 // Source - https://stackoverflow.com/a/2998822
 // Posted by InfinitiesLoop, modified by community. See post 'Timeline' for change history
