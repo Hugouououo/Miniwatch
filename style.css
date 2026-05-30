@@ -1,24 +1,28 @@
-:root{
+:root {
     /* Tema: Verde */
     --verde-cor-botao: #408a71;
     --verde-gradiente-fundo: 
-    linear-gradient(to top, hsl(175, 10%, 6%), hsl(175, 38%, 6%));
+    linear-gradient(to top, hsl(175, 10%, 6%), hsl(175, 24%, 6.5%), hsl(175, 38%, 6%));
+
     /* Tema: Roxo */
     --roxo-cor-botao: #9139a8;
     --roxo-gradiente-fundo: 
-    linear-gradient(to top, hsl(280, 15%, 6%), hsl(280, 45%, 7%));
+    linear-gradient(to top, hsl(280, 15%, 6%), hsl(280, 30%, 6.5%), hsl(280, 45%, 7%));
+
     /* Tema: Vermelho */
     --vermelho-cor-botao: #b32d2d;
     --vermelho-gradiente-fundo: 
-    linear-gradient(to top, hsl(0, 25%, 7%), hsl(0, 50%, 8%));
-    /* Tema: Azul  */
+    linear-gradient(to top, hsl(0, 25%, 7%), hsl(0, 37.5%, 7.5%), hsl(0, 50%, 8%));
+
+    /* Tema: Azul */
     --azul-cor-botao: #3d7eb5;
     --azul-gradiente-fundo: 
-    linear-gradient(to top, hsl(210, 15%, 6%), hsl(210, 40%, 7%));
-    /* Tema: Laranja  */
+    linear-gradient(to top, hsl(210, 15%, 6%), hsl(210, 27.5%, 6.5%), hsl(210, 40%, 7%));
+
+    /* Tema: Laranja */
     --laranja-cor-botao: #c76b2c;
     --laranja-gradiente-fundo: 
-    linear-gradient(to top, hsl(25, 15%, 6%), hsl(25, 45%, 7%));
+    linear-gradient(to top, hsl(25, 15%, 6%), hsl(25, 30%, 6.5%), hsl(25, 45%, 7%));
 }
 
 .tema-verde{
