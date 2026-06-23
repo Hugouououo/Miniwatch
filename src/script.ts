@@ -1,17 +1,18 @@
-let cronometro = document.querySelector(".cronometro") 
-let ligado = false
+let cronometro: any = document.querySelector(".cronometro")! 
+let ligado: boolean = false
 
-let playButton = document.querySelector("#play")
-let resetButton = document.querySelector("#reset")
-let temaButton = document.querySelector("#alternar-tema")
+let playButton = document.querySelector("#play")!
+let resetButton = document.querySelector("#reset")!
+let temaButton = document.querySelector("#alternar-tema")!
 
 const textoIniciar = `<img src="img/play.png" alt=""> <br>Iniciar`
 const textoPausar = `<img src="img/pause.png" alt=""> <br>Pausar`
 const textoContinuar = `<img src="img/play.png" alt=""> <br>Continuar`
 
 const data = new Date()
-let tempoInicial
-let tempoAcumulado = 0
+let tempoInicial: number
+let tempoAcumulado: number = 0 // se não houvesse "= 0" iria retornar NaN
+let timerInterval: number
 
 playButton.addEventListener("click", function startCronometro() {
     resetButton.removeAttribute('hidden')
@@ -73,14 +74,15 @@ temaButton.addEventListener("click", function alternarTema() {
     document.body.classList.remove(classesTema[i-1])
     document.body.classList.add(classesTema[i])
     i = (i + 1) % classesTema.length
-    // falta guardar na localStorage
+    // localStorage
+    //localStorage.setItem('tema',JSON.stringify(i))
 })
 // ^ super mega hiper gambiarra
 
 // Source - https://stackoverflow.com/a/2998822
 // Posted by InfinitiesLoop, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-04-22, License - CC BY-SA 4.0
-function pad(num, size) {
+function pad(num:any, size:number) {
     num = num.toString();
     while (num.length < size) num = "0" + num;
     return num;

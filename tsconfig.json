@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es2025",
+        "rootDir": "./",
+        "outDir": "./dist/js/",
+        "noEmitOnError": true,
+        "removeComments": true
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
