@@ -2,7 +2,7 @@
 
 ### Funcionalidades:
 - [X] Funções de _Pausar_, _Continuar_ e _Reiniciar_
-- [ ] Botão/menu para alternar entre 5 temas:
+- [X] Botão/menu para alternar entre 5 temas:
 	- [X] Verde (Padrão)
 	- [X] Roxo
 	- [X] Vermelho
